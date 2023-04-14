@@ -35,6 +35,7 @@ paths:
       - Authorization
       summary: Authenticates a user.
       description: Working with the API starts with authenticating by obtaining an ```access_token``` which should be later passed in Authorization header for each request.
+      operationId: postAuth
       parameters: []
       requestBody:
         content:
