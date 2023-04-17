@@ -33,8 +33,10 @@ paths:
     post:
       tags:
       - Authorization
-      summary: Authenticates a user.
-      description: Working with the API starts with authenticating by obtaining an ```access_token``` which should be later passed in Authorization header for each request.
+      summary: Authenticates an user
+      description: |-
+        Working with the API starts with authenticating by obtaining an `access_token` which should be later passed in `Authorization` header for each request. 
+        The lifetime of the token is 5 hours and after this a new token has to be obtained.
       operationId: postAuth
       parameters: []
       requestBody:
@@ -59,8 +61,9 @@ paths:
     get:
       tags:
       - Installations
-      summary: Installation list
-      description: Lists all installation user has access to.
+      summary: List Installations
+      description: |-
+        Returns list of customer installations.
       parameters: []
       responses:
         "200":
@@ -77,8 +80,9 @@ paths:
     get:
       tags:
       - Installations
-      summary: Installation details
-      description: ""
+      summary: Installation Details
+      description: |-
+        Returns installation details including list of measurement areas `(areas)`.
       parameters:
       - name: id
         in: path
@@ -103,8 +107,12 @@ paths:
     get:
       tags:
       - Statistics
-      summary: Returns visit stats for this installation.
-      description: ""
+      summary: Installation Visit Statistics
+      description: |-
+          Returns visit statistics for all areas in the given installation.
+          Statistics response is a list of data points with an interval `time`, an optional `quality` and a list or `areas` statistics.
+          The `quality` field is a list of data quality indicators (warning messages about the values).
+          This is an optional field, it does not appear if nothing abnormal is detected in the dataset.
       parameters:
       - name: id
         in: path
@@ -194,8 +202,9 @@ paths:
     get:
       tags:
       - Statistics
-      summary: Specific visit class stats.
-      description: ""
+      summary: Area Visit Statistics
+      description: |-
+        Returns visit statistics for specific area `area_id`. Statistics response is a list of data points with an interval `time` as a key.
       parameters:
       - name: id
         in: path
@@ -293,8 +302,10 @@ paths:
     get:
       tags:
       - Flows
-      summary: Visit flow between areas of this installation.
-      description: ""
+      summary: Installation Flow Statistics
+      description: |-
+        Returns flow statistics for all flows between areas in the given installation.
+        Statistics response is a list of data points with an interval `time` as a key and a list or `flows` statistics.
       parameters:
       - name: id
         in: path
@@ -383,9 +394,10 @@ paths:
   /installations/{id}/presence:
     get:
       tags:
-      - Presence
+      - Presence 
       summary: Installation presence
       description: |-
+        Returns presence counts for specific installation's areas.
         Returns a list of areas (visit classes) with `count` as a number
         of unique devices at the area for the past `minutes` (default 1).
       parameters:
@@ -423,9 +435,10 @@ paths:
   /presence:
     get:
       tags:
-      - Presence
-      summary: Cumulative presence from all installations
+      - Presence 
+      summary: Cumulative Presence 
       description: |-
+        Returns the cumultative presence from all the installations.
         Returns a list of areas (visit classes) with `count` as a number
         of unique devices at the area for the past `minutes` (default 1).
       parameters:
@@ -461,8 +474,9 @@ paths:
     get:
       tags:
       - Demo
-      summary: List of Demo installations
-      description: ""
+      summary: Demo Installations List
+      description: |-
+        Returns list of demo installations.
       parameters: []
       responses:
         "200":
@@ -477,8 +491,9 @@ paths:
     get:
       tags:
       - Demo
-      summary: Demo installation details
-      description: ""
+      summary: Demo Installation Details
+      description: |-
+        Returns demo installation details including list of measurement areas `(areas)`.
       parameters:
       - name: id
         in: path
@@ -499,8 +514,9 @@ paths:
     get:
       tags:
       - Demo
-      summary: Demo installation statistics
-      description: ""
+      summary: Demo Installation Statistics
+      description: |-
+        Returns visits statistics for all areas in the given demo installations.
       parameters:
       - name: id
         in: path
@@ -586,8 +602,10 @@ paths:
     get:
       tags:
       - Turnover
-      summary: Return list of turnover records.
-      description: ""
+      summary: Receiving Turnover Data
+      description: |-
+        Installation sales data. Allows uploading and retrieving turnover information for a given range.
+        It is only enabled for installations with `turnover` feature.
       parameters:
       - name: id
         in: path
@@ -639,8 +657,9 @@ paths:
     post:
       tags:
       - Turnover
-      summary: Add a turnover record.
-      description: ""
+      summary: Uploading Turnover Information
+      description: |-
+        Able to upload installation turnover information for a specified `range`.
       parameters:
       - name: id
         in: path
