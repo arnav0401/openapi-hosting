@@ -604,7 +604,7 @@ paths:
       - Turnover
       summary: Receiving Turnover Data
       description: |-
-        Installation sales data. Allows uploading and retrieving turnover information for a given range.
+        Installation sales data. Enables uploading and retrieving turnover information for a given range.
         It is only enabled for installations with `turnover` feature.
       parameters:
       - name: id
