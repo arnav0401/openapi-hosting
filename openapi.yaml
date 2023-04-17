@@ -657,7 +657,7 @@ paths:
     post:
       tags:
       - Turnover
-      summary: Uploading Turnover Information
+      summary: Uploading Turnover Data
       description: |-
         Able to upload installation turnover information for a specified `range`.
       parameters:
